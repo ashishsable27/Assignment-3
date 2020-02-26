@@ -3,10 +3,10 @@ const app = express();
 const userRoutes = express.Router();
 // Require User model in our routes module  
 let User = require('../models/User');
-// Defined store route  
+ 
 userRoutes.route('/add').post(function (req, res) {
   let user = new User(req.body);
-  console.log("User Req:", user);
+  //console.log("User Req:", user);
   user.save()
     .then(user => {
       res.status(200).json({ 'User': 'User has been added successfully' });
@@ -67,4 +67,6 @@ userRoutes.route('/delete/:id').get(function (req, res) {
     else res.json('Successfully removed');
   });
 });
+
+
 module.exports = userRoutes;  

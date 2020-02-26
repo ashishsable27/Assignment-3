@@ -26,13 +26,13 @@ export class UserAddComponent implements OnInit {
   }
   createForm() {
     this.angForm = this.fb.group({
-      Name: ['', Validators.required],
-      Gender: ['male', [Validators.required]],
-      Email: ['', Validators.required],
-      Address: ['', Validators.required],
-      City: ['', Validators.required],
-      State: ['', [Validators.required]],
-      Country: ['', Validators.required],
+      Name: ['',[Validators.required]],
+      Gender: ['male', Validators.required],
+      Email: ['', [Validators.required,Validators.email]],
+      Address: [''],
+      City: ['', ],
+      State: ['', ],
+      Country: ['', ],
       hobbies: new FormArray([])
     });
 
@@ -42,6 +42,11 @@ export class UserAddComponent implements OnInit {
 
 
   addUser() {
+
+    if (this.angForm.invalid) {
+      console.log("Invalid Form");
+      return;
+    }
     console.log('Form values:', this.angForm.value);
     let { Name, Gender, Email, Address, City, State, Country } = this.angForm.value;
     console.log('Name:', Name);
@@ -67,5 +72,14 @@ export class UserAddComponent implements OnInit {
       (this.angForm.controls.hobbies as FormArray).push(control);
     });
   }
+
+  get Name() {
+    return this.angForm.get('Name');
+  }
+
+  get Email(){
+    return this.angForm.get('Email');
+  }
+
 
 } 

@@ -18,7 +18,7 @@
      	 Angular Server Will start on 4200
 
 
-    	3. Go to http://localhost:4200/users
+	3. Go to http://localhost:4200/users
 
 	       This screen will list all the Customers Added to Database (Mongo Atlas in this assignment)
 
